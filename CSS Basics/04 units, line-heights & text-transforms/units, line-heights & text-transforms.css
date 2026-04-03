@@ -1,0 +1,90 @@
+/* 
+    Units
+*/
+
+/* 
+    Pixels (px) - Absolute unit, represents a fixed size on the screen. 1px is equal to one dot on the screen. It does not scale with the user's settings or the viewport size. Default font size in most browsers is 16px.
+*/
+
+#px {
+    font-size: 16px;
+}
+
+
+/* 
+    Relative Units
+    - em: Relative to the font size of the parent element. If the parent element has a font size of 16px, then 1em is equal to 16px. If the parent element's font size changes, the size of 1em will also change accordingly.
+    
+    - rem: Relative to the font size of the root element (html). If the root element has a font size of 16px, then 1rem is equal to 16px. It remains consistent regardless of the nesting level.
+    
+    - %: Relative to the font size of the parent element. If the parent element has a font size of 16px, then 100% is equal to 16px. Like em, it scales with the parent's font size.
+*/
+
+
+#em {
+    font-size: 1em;
+}
+
+#rem {
+    font-size: 1rem;
+}
+
+#percent {
+    font-size: 100%;
+}
+
+
+
+/* 
+    Line Heights
+    - The line-height property in CSS controls the amount of space between lines of text. It can be set using various units, including pixels (px), em, rem, and percentages (%).
+    
+    - A common practice is to use a unitless value for line-height, which is a multiplier of the font size. For example, a line-height of 1.5 means that the line height will be 1.5 times the font size.
+*/
+
+#line-height-normal {
+    line-height: normal;
+}
+
+#line-height-number {
+    line-height: 1.5;
+}
+
+#line-height-length {
+    line-height: 24px;
+}
+
+#line-height-percentage {
+    line-height: 150%;
+}
+
+
+
+/* 
+    Text Transforms
+    - The text-transform property in CSS is used to control the capitalization of text. It can be set to the following values:
+    
+    - uppercase: Transforms all characters to uppercase.
+    - lowercase: Transforms all characters to lowercase.
+    - capitalize: Transforms the first character of each word to uppercase and the rest to lowercase.
+    - none: No transformation is applied to the text.           
+*/
+
+#uppercase {
+    text-transform: uppercase;
+}
+
+#lowercase {
+    text-transform: lowercase;
+}
+
+#capitalize {
+    text-transform: capitalize;
+}
+
+#none {
+    text-transform: none;
+}
+
+
+
