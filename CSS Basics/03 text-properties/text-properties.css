@@ -1,0 +1,141 @@
+/* 
+    Text allignment
+*/
+
+#left {
+    text-align: left;
+}
+
+#center {
+    text-align: center;
+}
+
+#right {
+    text-align: right;
+}
+
+/*
+    It works according to parent element, so if we have a div and we apply text-align to it, all the text inside that div will be aligned according to the value of text-align property.
+*/
+
+#mainHeading {
+    text-align: center;
+}
+
+/* 
+    In CSS3 we have two new values for text-align property, start and end. Start will align the text to the left and end will align the text to the right.
+*/
+
+#start {
+    text-align: start;
+}
+
+#end {
+    text-align: end;
+}
+
+
+
+/* 
+    Text decoration
+*/
+
+#underline {
+    text-decoration: underline;
+}
+
+#overline {
+    text-decoration: overline;
+}
+
+#line-through {
+    text-decoration: line-through;
+}
+
+/* 
+    We can also combine multiple values for text-decoration property, for example we can have both underline and overline at the same time. We can also specify the color of the text decoration.
+*/
+
+#combined {
+    text-decoration: underline overline red;
+}
+
+/*
+    We can use this in a specific case for links, if we want to remove the underline from links, we can use text-decoration: none; on the link element.
+*/
+
+#link {
+    text-decoration: none;
+}
+
+
+
+/* 
+    Font Weight
+*/
+
+#normal {
+    font-weight: normal;
+}
+
+#bold {
+    font-weight: bold;
+}
+
+#bolder {
+    font-weight: bolder;
+}
+
+#lighter {
+    font-weight: lighter;
+}
+
+/* 
+    We can also specify the font weight using numbers, where 400 is normal and 700 is bold. We can use any number between 100 and 900, where 100 is the lightest and 900 is the boldest.
+*/
+
+#specific-Weight {
+    font-weight: 600;
+}
+
+
+
+/* 
+    Font Family
+*/
+
+#serif {
+    font-family: serif;
+}
+
+#sans-serif {
+    font-family: sans-serif;
+}
+
+#monospace {
+    font-family: monospace;
+}
+
+/* 
+    We can also specify a specific font family, for example we can use Arial, Helvetica, or any other font that is available on the user's system. We can also specify multiple font families as a fallback mechanism, in case the first one is not available.
+*/
+#specific-font {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* 
+    We can use @font-face rule to define a custom font and then use it in our CSS. We need to specify the font-family name and the source of the font file. We can also specify the font weight and style if needed.  
+*/
+
+@font-face {
+    font-family: "Softique Demo Bold";
+    src: url("SoftiqueDemo-Bold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+#custom-font {
+    font-family: "Softique Demo Bold", Arial, Helvetica, sans-serif;
+}
+
