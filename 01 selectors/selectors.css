@@ -1,0 +1,62 @@
+
+/*
+    Universal Selector
+    It works for the entire document, selecting all elements. It is represented by an asterisk (*). When you use the universal selector, it applies the specified styles to every element on the page, unless there are more specific selectors that override those styles for certain elements.
+*/
+
+* {
+    color:rgb(10, 119, 192);
+    background-color: rgb(255, 253, 249);
+}
+
+
+/*
+    Element Selector
+    It targets specific HTML elements by their tag name. For example, if you want to style all <h1> elements in your document or all <button> elements, you can use the element selector. The styles defined in the element selector will apply to all instances of that element in the document, unless there are more specific selectors that override those styles for certain elements.
+*/
+
+h1 {
+    color: rgb(42, 42, 42);
+    /*
+        CSS proties are applied in order of specificity. The more specific a selector is, the higher priority it has when determining which styles to apply to an element. In this case, the h1 selector is more specific than the universal selector (*), so the styles defined in the h1 selector will take precedence over those defined in the universal selector for any h1 elements.
+    */
+}
+
+button {
+    background-color: rgb(10, 119, 192);
+    color: rgb(255, 255, 255);
+}
+
+
+/*
+    ID Selector
+    It targets a specific element based on its unique ID attribute. The ID selector is represented by a hash symbol (#) followed by the ID name. For example, if you have an element with the ID "innerHeading", you can use the ID selector to apply styles specifically to that element. The styles defined in the ID selector will only apply to the element with the matching ID, and it will override any styles defined in less specific selectors for that element.
+*/
+
+#innerHeading {
+    color: rgb(255, 255, 255);
+    /*
+        The styles defined in the ID selector will take precedence over those defined in the universal selector and the element selector for the element with the ID "innerHeading". This is because the ID selector is more specific than both the universal selector and the element selector.
+    */
+}
+
+
+/*
+    Class Selector
+    It targets elements based on their class attribute. The class selector is represented by a period (.) followed by the class name. For example, if you have elements with the class "paragraph", you can use the class selector to apply styles to all elements that have that class. The styles defined in the class selector will apply to all elements with the matching class, and it will override any styles defined in less specific selectors for those elements. 
+
+    In general we dont give same id to multiple elements but we can give same class to multiple elements.
+*/
+
+.paragraph {
+    color: rgb(61, 69, 64);
+}
+
+.myClass{
+    background-color: rgb(10, 119, 192);
+    color: rgb(255, 168, 168);
+
+    /*
+        Here the color from the class selector will not show because the element selector is more specific than the class selector but the background-color will show because the element selector does not have a background-color property defined, so it will not override the background-color defined in the class selector.       
+    */
+}

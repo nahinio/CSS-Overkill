@@ -1,0 +1,45 @@
+/*
+    Question 01: Create a simple div with an id "box".
+    Add some text content inside the div.
+    Set its background color to blue.
+*/
+
+#box {
+    background-color: rgb(72, 145, 255);
+}
+
+/*
+    Question 02: Create 3 headings with h1, h2 & h3.
+    Give them all a class "heading" & set color of "heading" to red.
+*/
+
+.heading {
+    color: rgb(222, 88, 88);
+}
+
+/*
+    Question 03: Create a button & set its background color to:
+    - green using css stylesheet
+    - blue using <style> tag
+    - red using inline css
+*/
+
+#testButton {
+    background-color: rgb(33, 153, 83);
+}
+
+
+/* 
+    Extras
+*/
+
+/*
+    Scenario A: If your .css file says color: blue but your HTML tag says <h1 style="color: red;">, the text will be red. Inline CSS is the "closest" to the element and overrides any other styles defined in the stylesheet or <style> tag.
+
+    Scenario B: Internal vs. External If both target the same element, the browser checks the Order of Appearance in the <head>.
+
+        - If the <link> is at the top and the <style> is at the bottom, the Internal styles win.
+
+        - If you move the <link> to the very bottom (just before </head>), the External file wins.
+
+*/
