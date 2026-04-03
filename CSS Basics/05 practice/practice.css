@@ -1,0 +1,31 @@
+/*
+    Question 01: Create a heading centred on the page with all of its text capitalized by default.
+*/
+
+#heading-allignment-transformation {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/*
+    Question 02: Set the font family of all the content in the document to "Times New Roman".
+*/
+
+#font-change {
+    font-family: "Times New Roman";
+}
+
+/*
+    Question 03: Create one div inside another div.
+     - Set id & text "outer" for the first one & "inner" for the second one.
+     - Set the outer div text size to 25px & inner div text size to 10px.
+
+*/
+
+#outer {
+    font-size: 25px;
+}
+
+#inner {
+    font-size: 10px;
+}
