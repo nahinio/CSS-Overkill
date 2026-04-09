@@ -1,0 +1,35 @@
+/* 
+    Question 02: Create the navigation bar in /Question02.png 
+*/
+
+/* 
+    By default, all elements have some margin and padding. To make sure that our navigation bar looks exactly like the one in the image, we need to reset the margin and padding of all elements to 0. We can do this by using the universal selector (*) in CSS, which selects all elements on the page and applies the specified styles to them.
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+
+#navbar {
+    height: 60px;
+    background-color: #0F1111;
+
+}
+
+button {
+    background-color: #F08804;    
+}
+
+#logo {
+    color : #F08804;
+    font-size: 25px;
+}
+
+a {
+    margin-right: 200px;
+    margin-left: 20px;
+    text-decoration: none;
+}
