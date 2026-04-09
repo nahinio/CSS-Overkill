@@ -1,0 +1,136 @@
+/* In the Box model, the content is made up of four parts: content, padding, border, and margin. The content is the innermost part where text and images are displayed. Padding is the space between the content and the border. Border is the line that surrounds the padding. Margin is the space outside the border that separates the element from other elements.
+
+
+      MARGIN (outer space)
+    ┌─────────────────────┐
+    │   BORDER (outline)  │
+    │  ┌───────────────┐  │
+    │  │ PADDING (gap) │  │
+    │  │  ┌─────────┐  │  │
+    │  │  │ CONTENT │  │  │
+    │  │  └─────────┘  │  │
+    │  └───────────────┘  │
+    └─────────────────────┘
+*/
+
+
+
+
+
+.box-modelDiv {
+
+    /* Width and height of the div element. The width is set to 400 pixels and the height is set to 200 pixels. USing the background color we can see the dimensions of the div element.
+    */
+
+    width: 400px;
+    height: 200px;
+    background-color: rgb(255, 201, 201);
+
+    text-align: center;
+
+
+    /* Border of the div element. The border is set to 2 pixels dotted with a red color. This is the short-hand syntax for border properties. */
+
+    border: 2px dotted rgb(136, 17, 17);
+}
+
+h2 {
+    color: rgb(136, 17, 17);
+}
+
+h1 {
+    height: 40px;
+    width: 680px;
+    background-color: rgb(235, 255, 177);
+
+    color: rgb(54, 70, 7);
+    text-align: center;
+
+    /* Border properties for the h1 element. Its the full syntax. for the three border properties */
+
+    border-width: 2px;
+    border-color:  rgb(54, 70, 7);
+    border-style: solid;
+
+}
+
+button {
+    width: 80px;
+    height: 30px;
+    background-color: rgb(190, 232, 255);
+
+    color: rgb(0, 33, 122);
+    text-align: center;
+
+    border-width: 2px;
+    border-color:  rgb(0, 33, 122);
+    border-style: solid;
+}
+
+
+
+/* Border-radius property is used to create rounded corners for the elements. The value can be in pixels or percentage. If the value is in percentage, it will be relative to the width and height of the element. If the value is 50%, it will create a circle if the width and height are equal. If the value is in pixels, it will create rounded corners with the specified radius.*/
+
+
+
+#div-a {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 230, 155);
+    
+
+    border: 2px solid rgb(255, 140, 0);
+    border-radius: 10px;
+
+
+    /* Padding is the space between the content and the border. The padding can be set for each side of the element (top, right, bottom, left) */
+
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+
+    /* Margin is the space outside the border that separates the element from other elements. The margin can be set for each side of the element (top, right, bottom, left) */
+
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+#div-b {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 230, 155);
+    
+    border: 2px solid rgb(255, 140, 0);
+    border-radius: 25px;
+
+    /* Padding can be set using the shorthand property. A single value sets all four sides. */
+
+    padding: 40px;
+
+    /* Margin can be set using the shorthand property. A single value sets all four sides. */
+
+    margin: 20px;
+}
+
+#div-c {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 230, 155);
+    
+    text-align: center;
+
+    border: 2px solid rgb(255, 140, 0);
+    border-radius: 50%;
+
+    /* Padding can be set using the shorthand property. The values are in the order: top, right, bottom, left. */
+
+    padding: 40px 40px 40px 40px;
+
+    /* Margin can be set using the shorthand property. The values are in the order: top, right, bottom, left. */
+
+    margin: 20px 20px 20px 20px;
+
+}
