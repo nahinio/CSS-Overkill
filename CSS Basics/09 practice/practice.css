@@ -1,0 +1,79 @@
+/* Question 01: Create a webpage layout with a header, a footer & a content area containing 3 divs.
+Set the height & width of divs to 100px.
+(add the navbar from practice 03 in the header) */
+
+.contentBox {
+    height: 100px;
+    width: 100px;
+}
+
+/* NavBar Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+
+#navbar {
+    height: 60px;
+    background-color: #0F1111;
+
+}
+
+button {
+    background-color: #F08804;    
+}
+
+#logo {
+    color : #F08804;
+    font-size: 25px;
+}
+
+a {
+    margin-right: 200px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+
+/* Question 02: Add borders to all the divs. */
+
+.contentBox {
+    border: 1px solid black;
+    display: inline-block;
+}
+
+
+/* Question 03: Add a different background color to each div with an opacity of 0.5 */
+
+#div1 {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+#div2 {
+    background-color: rgba(119, 0, 255, 0.5);
+}
+#div3 {
+    background-color: rgba(208, 255, 0, 0.5);
+}
+
+/* Extra Footer Styles */
+#footer {
+    height: 60px;
+    background-color: #0F1111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#yellow {
+    color: #F08804;
+}
+
+/* Question 04: Give the content area an appropriate height. */
+
+#content {
+    height: 630px;
+}
