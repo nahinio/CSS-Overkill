@@ -1,0 +1,103 @@
+/* Block Element take up the full width available and start on a new line. For example, a <div>, <h1>, <p> element is a block element. */
+
+#block {
+    background-color: lightblue;
+}
+
+/* Inline Element only take up as much width as necessary and do not start on a new line. For example, a <span>, <a>, <strong> element is an inline element. */
+
+#inline {
+    background-color: rgb(215, 255, 215);
+}
+
+
+/* We can change the display property of an element to modify its behavior. */
+#blockChange {
+    background-color: lightblue;
+    display: inline;
+}
+
+#inlineChange {
+    background-color: rgb(215, 255, 215);
+    display: block;
+}
+
+
+
+.divEdit {
+    width: 100px;
+    height: 100px;
+
+    margin: 25px;
+    padding: 25px;
+}
+
+.divEdit1 {
+    width: 100px;
+    height: 100px;
+
+    margin: 25px;
+    padding: 25px;
+
+    display: inline;
+}
+
+
+/* Here we can see the margin is set only in the right and left directions but not in the top and bottom. Because inline elements do not start on a new line, their vertical margins and padding do not affect the layout. To solve this we can use display: inline-block; */
+
+
+.divEdit2 {
+    width: 100px;
+    height: 100px;
+
+    margin: 25px;
+    padding: 25px;
+
+    display: inline-block;
+
+    /* Similar to inline elements, but with block-level properties like Margin and Padding */
+}
+
+
+/* Display None means the element is completely removed from the document flow and is not visible. */
+
+#box2 {
+    display: none;
+}
+
+/* Visibility Hidden means the element is hidden but still takes up space in the layout. */
+
+#box2again {
+    visibility: hidden;
+}
+
+
+/* The alpha channel is a component of a color that represents its transparency. It is often used in RGBA (Red, Green, Blue, Alpha) color values to specify the opacity of an element. The alpha value ranges from 0 (completely transparent) to 1 (completely opaque). */
+
+#alpha1 {
+    width: 100px;
+    height: 100px;
+
+    display: inline-block;
+
+    background-color: rgba(255, 0, 0, 0.25);
+}
+
+#alpha2 {
+    width: 100px;
+    height: 100px;
+
+    display: inline-block;
+
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+#alpha3 {
+    width: 100px;
+    height: 100px;
+
+
+    display: inline-block;
+
+    background-color: rgba(255, 0, 0, 0.75);
+}
