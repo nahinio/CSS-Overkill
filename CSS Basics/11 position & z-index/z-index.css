@@ -1,0 +1,45 @@
+/* 
+If a div overlaps with another div, the z-index property determines which one appears on top. By Default, elements are stacked in the order they appear in the HTML, with later elements appearing on top of earlier ones
+
+The z-index property only works on elements that have a position value other than static (the default). This means that you need to set the position property to relative, absolute, or fixed for the z-index to take effect. 
+
+If the value of z-index is higher, the element will be displayed in front of elements with a lower z-index value. If two elements have the same z-index value, the one that appears later in the HTML will be displayed on top. NB: Z-index wont work if the elements are not positioned (i.e., if they have position: static). In such cases, the stacking order will be determined by the order of the elements in the HTML, with later elements appearing on top of earlier ones.
+*/
+
+
+#box1 {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 201, 201);
+    border: solid 1px rgb(113, 0, 0);
+    
+    z-index: 1; /* This will be behind box2 */
+}
+
+
+#box2 {
+    position: absolute;
+    top: 20px;
+    left: 190px;
+    width:200px;
+    height: 200px;
+    background-color: rgb(177, 221, 255);
+    border: solid 1px rgb(0, 70, 100);
+    
+    z-index: 2; /* This will be in front of box1 */
+}
+
+
+#box3 {
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(247, 255, 208);
+    border: solid 1px rgb(89, 88, 0);
+    z-index: 3; /* This will be in front of both box1 and box2 */
+}

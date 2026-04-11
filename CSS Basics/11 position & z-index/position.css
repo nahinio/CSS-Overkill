@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+div {
+    width: 100px;
+    height: 100px;
+    
+
+    display: inline-block;
+}
+
+
+/* Static Positioning means the element is positioned according to the normal document flow. It means the default positioning behavior. So we cant change its position in any way. So the top, left, right, and bottom properties and z-index have no effect. */
+
+
+#box1 {
+    position: static;
+
+    background-color: rgb(255, 201, 201);
+    border: solid 1px rgb(113, 0, 0);
+
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+
+    /* These properties have no effect on statically positioned elements */
+}
+
+/* Relative Positioning means the element is positioned relative to its normal position. So we can change its position using the top, left, right, and bottom properties. But it will still take up the same space in the document flow as if it were static. */
+
+#box2 {
+    position: relative;
+
+    background-color: rgb(177, 221, 255);
+    border: solid 1px rgb(0, 70, 100);
+
+    top: 20px;
+    left: 20px;
+
+}
+
+
+/* Absolute Positioning means the element is positioned relative to its nearest positioned ancestor (an ancestor with a position other than static). Ancestor means a parent or other ancestor element that has a position value other than static.
+If no such ancestor exists, it is positioned relative to the initial containing block (usually the viewport). The top, left, right, and bottom properties can be used to specify the position. 
+
+It removes the element from the normal document flow, so it does not take up space in the layout. */
+
+#box3 {
+    position: absolute;
+
+    background-color: rgb(247, 255, 208);
+    border: solid 1px rgb(89, 88, 0);
+
+    top: 250px;
+    left: 200px;
+
+}
+
+
+/* Fixed Positioning means the element is positioned relative to the viewport (the browser window). The top, left, right, and bottom properties can be used to specify the position. It removes the element from the normal document flow, so it does not take up space in the layout. */
+
+#box4 {
+    position: fixed;
+
+    height: 50px;
+    width: 100%;
+
+    background-color: rgb(255, 208, 234);
+    border: solid 1px rgb(89, 0, 44);
+
+    bottom: 0px;
+    left: 0px;
+
+}
+
+
+#fixedbox {
+    position: fixed;
+
+    height: 50px;
+    width: 100%;
+
+    background-color: rgb(204, 255, 228);
+    border: solid 1px rgb(0, 53, 10);
+
+    top: 0px;
+
+}
+
+/* Sticky Positioning means the element is positioned relative to the viewport (the browser window) once it reaches a certain scroll position. The top, left, right, and bottom properties can be used to specify the position. It removes the element from the normal document flow, so it does not take up space in the layout. */
+
+
+#box5 {
+    position: sticky;
+
+    background-color: rgb(255, 229, 201);
+    border: solid 1px rgb(151, 93, 0);
+
+    
+    top: 0;
+    left: 50%;
+}
