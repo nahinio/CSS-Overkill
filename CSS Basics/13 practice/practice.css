@@ -1,0 +1,27 @@
+/* 
+    Question 01: Create the following layout using the given html. 
+        - Give the div a height, width & some background image. 
+        - Use the appropriate position property for the div element to place it at the right end of the page. (The div should not move even on scroll)
+        - Use z-index to place the div on top of the page.
+
+    <p> lorem*5 </p>
+    <div> Love Nature </div>
+    <p> lorem*5 </p>
+
+*/
+
+#divTest {
+    height: 200px;
+    width: 200px;
+    background-image: url('https://plus.unsplash.com/premium_photo-1775183877998-9117778f10e4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDE4fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D');
+    background-size: cover;
+
+    color: white;
+
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+
+    z-index: 1;
+
+}
