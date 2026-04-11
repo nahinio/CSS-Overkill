@@ -1,0 +1,65 @@
+/* % means percentage of the parent element's dimension */
+#box1 {
+    width: 200px;
+    height: 100px;
+
+    background-color: antiquewhite;
+}
+
+#box2 {
+    width: 50%;
+    height: 50%;
+
+    background-color: lightcoral;
+}
+
+
+/* em units represent the font size of the element. Lets assume the font size of #box1 is 16px then the 1em value will be 16px */
+#box3 {
+    width: 200px;
+    height: 200px;
+
+    font-size: 16px;
+    padding: 10px;
+
+    background-color: lightblue;
+}
+
+#box4 {
+    width: 130px;
+    height: 100px;
+
+    font-size: 2em; /* 2em will be 2 times the font size of #box3 which is 16px, so it will be 32px */
+
+    padding: 15px;
+
+    background-color: rgb(245, 205, 255);
+}
+
+
+/* Root em units or rem means the font size of the root element (html tag) */
+
+html {
+    font-size: 16px;
+}
+
+#box5 {
+    width: 200px;
+    height: 200px;
+
+    font-size: 1rem; /* 1rem will be equal to the font size of the html tag, which is 16px */
+
+    padding: 10px;
+
+    background-color: rgb(212, 255, 212);
+}
+
+
+/* Another example of relative units is vh (viewport height). It means a percentage of the viewport height (Viewport Height means the height of the browser window). There is also viewport width (vw). It means a percentage of the viewport width */
+
+#box6 {
+    width: 50vw; /* 50vw will be 50% of the viewport width */
+    height: 50vh; /* 50vh will be 50% of the viewport height */
+
+    background-color: rgb(255, 255, 212);
+}
