@@ -1,0 +1,125 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar */
+
+.nav {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.element{
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+#profile {
+    height: 40px;
+    width: 40px;
+    background-color: #536ffe;
+    border-radius: 50%;
+    color: white;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pro  {
+    margin-top: 15px;
+    font-size: small;
+    gap: 30px;
+}
+
+
+
+
+.main {
+    background-color: #EBEBEB;
+    padding: 30px;
+
+}
+
+.recent {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rb {
+    height: 200px;
+    width: 350px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    margin: 30px;
+    padding: 40px;
+}
+
+
+.me{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 700px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+#js {
+    height: 80px;
+    width: 80px;
+    background-color: #536ffe;
+    border-radius: 50%;
+
+    color: white;
+    font-weight: bold;
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+
+}
+
+.mebox {
+    display: flex;
+
+}
+
+
+#task {
+    height: 100px;
+    width: 250px;
+    background-color: white;
+    border-radius: 13px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    justify-content: center;
+    
+}
+
+.mainPro {
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,0 +1,141 @@
+body {
+    text-align: center;
+}
+
+div {
+    height: 100px;
+    width: 100px;
+
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.container {
+    width: 800px;
+    height: 300px;
+    display: flex;
+}
+
+
+#container01{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+/* The box order will be determined by the order of the elements in the HTML. But if we want to make custom order, we can use the order property
+    1. First there will appear the boxes with no order property or with the order property set to 0. They will be placed in the order they appear in the HTML. If there is negative order value, the box will be placed before the boxes with no order property or with the order property set to 0. If there are multiple boxes with negative order values, they will be placed in the order of their order value, from lowest to highest.
+    2. Then there will appear the boxes with the order property set to a positive value. They will be placed in the order of their order value, from lowest to highest.
+    4. If two or more boxes have the same order value, they will be placed in the order they appear in the HTML.
+*/
+
+#box1 {
+    background-color: rgb(255, 180, 180);
+    order: 3;
+}
+
+#box2 {
+    background-color: rgb(206, 255, 206);
+    order: 1;
+}
+
+#box3 {
+    background-color: rgb(173, 216, 230);
+    order: 2;
+}
+
+#box4 {
+    background-color: rgb(255, 255, 175);
+    order: -5;
+}
+
+#box5 {
+    background-color: rgb(183, 255, 255);
+    order: 0;
+}
+
+#box6 {
+    background-color: rgb(255, 211, 153);
+}
+
+#box7 {
+    background-color: rgb(223, 255, 143);
+}
+
+#box8 {
+    background-color: rgb(166, 188, 255);
+    order: 5;
+}
+
+#box9 {
+    background-color: rgb(255, 198, 248);
+    order: 4;
+}
+
+#box10 {
+    background-color: rgb(167, 255, 227);
+    order: 5;
+}
+
+
+
+
+
+
+#container01{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+
+
+/* Flex grow defines how much space a flex item will take up relative to other flex items. If flex-grow is set to 1, the item will take up all available space in the container. If flex-grow is set to 0, the item will not take up any additional space. */
+
+
+#box11{
+    background-color: rgb(255, 180, 180);
+}
+
+#box21{
+    background-color: rgb(206, 255, 206);
+}
+
+#box31{
+    background-color: rgb(173, 216, 230);
+}
+
+#box41{
+    background-color: rgb(255, 255, 175);
+}
+
+.box {
+    /* By defalut flex-grow = 0, it means the item will not take up any additional space */
+    flex-grow: 0;
+}
+
+.box1 {
+    flex-grow: 1;
+    /* This will make the item take up all available space in the container */
+}
+
+
+/* Flex Shrink defines how much a flex item will shrink relative to other flex items when there isn't enough space in the container. If flex-shrink is set to 1, the item will shrink proportionally. If flex-shrink is set to 0, the item will not shrink at all and it will overflow if we don't provide enough space and the wrap is disabled. */
+
+
+
+.containerShrink {
+    width: 300px;
+    height: 300px;
+    display: flex;
+}
+
+#container03{
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.box2{
+    /* By default flex-shrink = 1, it means the item will shrink proportionally when there isn't enough space in the container. But here i made it not shrink by giving the value 0. So it will overflow if we don't provide enough space and the wrap is disabled. */
+    flex-shrink: 0;
+}

@@ -1,0 +1,268 @@
+body {
+    text-align: center;
+}
+
+div {
+    height: 100px;
+    width: 100px;
+
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.container {
+    width: 800px;
+    height: 200px;
+    display: flex;
+    /* If I want to use flex in a container I need to set the display property to flex. So now we can use flexbox properties */ 
+
+}
+
+#box1 {
+    background-color: rgb(255, 180, 180);
+}
+
+#box2 {
+    background-color: rgb(206, 255, 206);
+}
+
+#box3 {
+    background-color: rgb(173, 216, 230);
+}
+
+#box4 {
+    background-color: rgb(255, 255, 175);
+}
+
+#box5 {
+    background-color: rgb(183, 255, 255);
+}
+
+
+/* Flex Direction */
+
+#container1 {
+    flex-direction: row;
+    /* This is the default value. It means that the items will be placed in a row from left to right. */
+}
+
+#container2 {
+    flex-direction: row-reverse;
+    /* This means that the items will be placed in a row from right to left. */
+}
+
+#container3 {
+    flex-direction: column;
+    /* This means that the items will be placed in a column from top to bottom. */
+}
+
+#container4 {
+    flex-direction: column-reverse;
+    /* This means that the items will be placed in a column from bottom to top. */
+}
+
+/* In flex direction the content div size will auto adjust according to the inner content size. */
+
+
+
+/* There are many types of way to Justify Content.
+    1. flex-start: This is the default value. It means that the items will be placed at the start of the container.
+    
+    2. flex-end: This means that the items will be placed at the end of the container.
+    
+    3. center: This means that the items will be placed at the center of the container.
+    
+    4. space-around: This means that the items will be placed with equal space around them.The first item will have space on the left and the last item will have space on the right and this space will be half of the space between the items.
+
+    5. space-between: This means that the items will be placed with equal space between them. The first item will be at the start of the container and the last item will be at the end of the container.
+
+    6. space-evenly: This means that the items will be placed with equal space between them. The first item will have space on the left and the last item will have space on the right and this space will be equal to the space between the items.
+*/
+
+#container11 {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#container21 {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#container31 {
+    flex-direction: row;
+    justify-content: center;
+}
+
+#container41 {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#container51 {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#container61 {
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+
+#box6 {
+    background-color: rgb(255, 211, 153);
+}
+
+#box7 {
+    background-color: rgb(223, 255, 143);
+}
+
+#box8 {
+    background-color: rgb(166, 188, 255);
+}
+
+#box9 {
+    background-color: rgb(255, 198, 248);
+}
+
+#box10 {
+    background-color: rgb(167, 255, 227);
+}
+
+
+
+.container1 {
+    width: 800px;
+    height: 400px;
+    display: flex;
+}
+
+/* If Flex wrap in no wrap then the boxes will not wrap to the next line and auto adjust their size */
+
+#container12 {
+    flex-wrap: nowrap;
+}
+
+/* If Flex wrap is set to wrap then the boxes will wrap to the next line if they don't fit in the current line */
+
+#container22 {
+    flex-wrap: wrap;
+}
+
+
+/* If Flex wrap is set to reverse wrap then the boxes will wrap to the next line in reverse order if they don't fit in the current line */
+
+#container32 {
+    flex-wrap: wrap-reverse;
+}
+
+
+/* Flex Flow is a shorthand property for setting both flex-direction and flex-wrap */
+
+#container13 {
+    flex-flow: row wrap;
+}
+
+
+/* Align Items is always by default stretch and it means that the items will stretch to fill the container along the cross axis so there will be no space around them */
+
+
+.container2 {
+    width: 800px;
+    height: 600px;
+    display: flex;
+}
+
+
+#container14 {
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    /* We can see gap between the items line */
+}
+
+#container24 {
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    /* Here this is not stretch and started from the top of each line */
+}
+
+#container34 {
+    flex-wrap: wrap;
+    align-items: center;
+
+    /* Here this is not stretch and centered vertically in each line */
+}
+
+#container44 {
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    /* Here this is not stretch and ended at the bottom of each line */
+}
+
+
+#container54 {
+    flex-wrap: wrap;
+    align-items: self;
+
+    /* Here this is not stretch and aligned to the self position */
+}
+
+
+
+/* Allign Content means they are now not working as different item for each line now they are same content for the whole part */
+
+
+#container15 {
+    flex-wrap: wrap;
+    align-content: stretch;
+
+    /* This is the default value. It means that the items will stretch to fill the container along the cross axis so there will be no space around them */
+}
+
+#container25 {
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    /* Here this is not stretch and started from the top of the container */
+}
+
+
+#container35 {
+    flex-wrap: wrap;
+    align-content: center;
+
+    /* Here this is not stretch and centered vertically in the container */
+}
+
+#container45 {
+    flex-wrap: wrap;
+    align-content: flex-end;
+
+    /* Here this is not stretch and ended at the bottom of the container */
+}
+
+#container55 {
+    flex-wrap: wrap;
+    align-content: space-around;
+
+    /* Here this is not stretch and spaced around vertically in the container */
+}
+
+#container65 {
+    flex-wrap: wrap;
+    align-content: space-between;
+
+    /* Here this is not stretch and spaced between vertically in the container */
+}
+
+#container75 {
+    flex-wrap: wrap;
+    align-content: space-evenly;
+
+    /* Here this is not stretch and spaced evenly vertically in the container */
+}
