@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Basics - Visual Cheatsheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="cheatsheet.css" />
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-badge">Visual Recap</div>
+    <h1>CSS Basics <span class="hero-accent">Cheatsheet</span></h1>
+    <p class="hero-sub">Every concept from your CSS files - syntax + explanation at a glance</p>
+    <nav class="pill-nav">
+        <a href="#selectors"  class="pill">01 Selectors</a>
+        <a href="#text"       class="pill">03 Text Properties</a>
+        <a href="#units"      class="pill">04 Units &amp; LH</a>
+        <a href="#boxmodel"   class="pill">06 Box Model</a>
+        <a href="#display"    class="pill">08 Display</a>
+        <a href="#relunits"   class="pill">10 Rel Units</a>
+        <a href="#position"   class="pill">11 Position</a>
+        <a href="#zindex"     class="pill">11 Z-Index</a>
+        <a href="#bg"         class="pill">12 Background</a>
+        <a href="#flexbox"    class="pill">14 Flexbox</a>
+    </nav>
+</header>
+
+<main class="sheet">
+
+    <!-- ═══════════ 01 SELECTORS ═══════════ -->
+    <section class="section" id="selectors">
+        <div class="section-label">01 - Selectors</div>
+        <h2 class="section-title">CSS Selectors &amp; Specificity</h2>
+
+        <!-- Universal -->
+        <div class="concept-block">
+            <h3 class="concept-title">Universal Selector <code>*</code></h3>
+            <p class="concept-desc">It works for the entire document, selecting all elements. It is represented by an asterisk (<code>*</code>). When you use the universal selector, it applies the specified styles to every element on the page, unless there are more specific selectors that override those styles for certain elements.</p>
+            <div class="syntax-row">
+                <pre class="syntax">* {
+    color: rgb(10, 119, 192);
+    background-color: rgb(255, 253, 249);
+}</pre>
+                <div class="demo-box demo-universal">Applies to <em>every</em> element on the page.</div>
+            </div>
+        </div>
+
+        <!-- Element -->
+        <div class="concept-block">
+            <h3 class="concept-title">Element Selector <code>h1</code></h3>
+            <p class="concept-desc">It targets specific HTML elements by their tag name. For example, if you want to style all &lt;h1&gt; elements or all &lt;button&gt; elements. The styles will apply to all instances of that element, unless more specific selectors override them.</p>
+            <p class="concept-note">CSS properties are applied in order of <strong>specificity</strong>. The more specific a selector is, the higher priority it has. The h1 selector is more specific than the universal selector (<code>*</code>), so h1 styles take precedence over universal styles for h1 elements.</p>
+            <div class="syntax-row">
+                <pre class="syntax">h1 {
+    color: rgb(42, 42, 42);
+}
+
+button {
+    background-color: rgb(10, 119, 192);
+    color: rgb(255, 255, 255);
+}</pre>
+                <div class="demo-col">
+                    <div class="demo-element-h1">I am styled by the h1 element selector</div>
+                    <button class="demo-element-btn">Button</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ID -->
+        <div class="concept-block">
+            <h3 class="concept-title">ID Selector <code>#id</code></h3>
+            <p class="concept-desc">It targets a specific element based on its unique ID attribute. The ID selector is represented by a hash symbol (<code>#</code>) followed by the ID name. The styles will only apply to the element with the matching ID, and it will override any styles defined in less specific selectors.</p>
+            <p class="concept-note">The ID selector takes precedence over both the universal selector and the element selector. This is because it is more specific than both.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#innerHeading {
+    color: rgb(255, 255, 255);
+}</pre>
+                <div id="demo-id-box" class="demo-box">I have a unique ID - highest specificity among these three.</div>
+            </div>
+        </div>
+
+        <!-- Class -->
+        <div class="concept-block">
+            <h3 class="concept-title">Class Selector <code>.class</code></h3>
+            <p class="concept-desc">It targets elements based on their class attribute. The class selector is represented by a period (<code>.</code>) followed by the class name. The styles will apply to all elements with the matching class and override any styles defined in less specific selectors.</p>
+            <p class="concept-note">In general we don't give the same ID to multiple elements, but we <strong>can</strong> give the same class to multiple elements. Also: the color from a class selector will not show if the element selector already sets color - but background-color will show if the element selector does not define one.</p>
+            <div class="syntax-row">
+                <pre class="syntax">.paragraph {
+    color: rgb(61, 69, 64);
+}
+
+.myClass {
+    background-color: rgb(10, 119, 192);
+    color: rgb(255, 168, 168);
+}</pre>
+                <div class="demo-col">
+                    <span class="demo-class-pill">Box A</span>
+                    <span class="demo-class-pill">Box B</span>
+                    <span class="demo-class-pill">Box C - same class, all styled</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specificity summary -->
+        <div class="concept-block">
+            <h3 class="concept-title">Specificity Order (low → high)</h3>
+            <div class="specificity-row">
+                <div class="spec-chip spec-univ">* (0-0-0)</div>
+                <span class="spec-arrow">→</span>
+                <div class="spec-chip spec-elem">element (0-0-1)</div>
+                <span class="spec-arrow">→</span>
+                <div class="spec-chip spec-cls">.class (0-1-0)</div>
+                <span class="spec-arrow">→</span>
+                <div class="spec-chip spec-id">#id (1-0-0)</div>
+                <span class="spec-arrow">→</span>
+                <div class="spec-chip spec-inline">inline style</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 03 TEXT PROPERTIES ═══════════ -->
+    <section class="section" id="text">
+        <div class="section-label">03 - Text Properties</div>
+        <h2 class="section-title">Text Properties</h2>
+
+        <!-- text-align -->
+        <div class="concept-block">
+            <h3 class="concept-title">text-align</h3>
+            <p class="concept-desc">It works according to the parent element - if we apply text-align to a div, all text inside that div will be aligned according to the value. In CSS3 we have two new values: <code>start</code> (aligns left in LTR) and <code>end</code> (aligns right in LTR).</p>
+            <div class="syntax-row">
+                <pre class="syntax">#left   { text-align: left;   }
+#center { text-align: center; }
+#right  { text-align: right;  }
+#start  { text-align: start;  } /* CSS3 */
+#end    { text-align: end;    } /* CSS3 */</pre>
+                <div class="demo-col demo-align-parent">
+                    <p class="demo-ta-left">text-align: left</p>
+                    <p class="demo-ta-center">text-align: center</p>
+                    <p class="demo-ta-right">text-align: right</p>
+                    <p class="demo-ta-start">text-align: start (CSS3)</p>
+                    <p class="demo-ta-end">text-align: end (CSS3)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- text-decoration -->
+        <div class="concept-block">
+            <h3 class="concept-title">text-decoration</h3>
+            <p class="concept-desc">We can combine multiple values at the same time and also specify the color. A specific use case: if we want to remove the underline from links, we use <code>text-decoration: none</code>.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#underline   { text-decoration: underline; }
+#overline    { text-decoration: overline; }
+#linethrough { text-decoration: line-through; }
+
+/* combine + color */
+#combined { text-decoration: underline overline red; }
+
+/* remove link underline */
+#link { text-decoration: none; }</pre>
+                <div class="demo-col">
+                    <p class="demo-td-underline">text-decoration: underline</p>
+                    <p class="demo-td-overline">text-decoration: overline</p>
+                    <p class="demo-td-linethrough">text-decoration: line-through</p>
+                    <p class="demo-td-combined">underline overline red - combined</p>
+                    <a class="demo-td-none" href="#">link - text-decoration: none</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- font-weight -->
+        <div class="concept-block">
+            <h3 class="concept-title">font-weight</h3>
+            <p class="concept-desc">We can also specify the font weight using numbers, where 400 is normal and 700 is bold. We can use any number between 100 and 900, where 100 is the lightest and 900 is the boldest.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#normal   { font-weight: normal;  } /* 400 */
+#bold     { font-weight: bold;    } /* 700 */
+#bolder   { font-weight: bolder;  }
+#lighter  { font-weight: lighter; }
+#numeric  { font-weight: 600;     } /* any 100–900 */</pre>
+                <div class="demo-col">
+                    <p class="fw-normal">font-weight: normal</p>
+                    <p class="fw-bold">font-weight: bold</p>
+                    <p class="fw-bolder">font-weight: bolder</p>
+                    <p class="fw-lighter">font-weight: lighter</p>
+                    <p class="fw-600">font-weight: 600 (numeric)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- font-family -->
+        <div class="concept-block">
+            <h3 class="concept-title">font-family</h3>
+            <p class="concept-desc">We can specify a specific font family (e.g. Arial, Helvetica) or use multiple font families as a <strong>fallback mechanism</strong> in case the first one is not available. We can use <code>@font-face</code> to define a custom font - we need to specify the font-family name and the source of the font file.</p>
+            <div class="syntax-row">
+                <pre class="syntax">/* generic families */
+#serif      { font-family: serif; }
+#sans-serif { font-family: sans-serif; }
+#monospace  { font-family: monospace; }
+
+/* specific + fallback */
+#specific-font {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* custom font via @font-face */
+@font-face {
+    font-family: "Softique Demo Bold";
+    src: url("SoftiqueDemo-Bold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+#custom-font {
+    font-family: "Softique Demo Bold", Arial, sans-serif;
+}</pre>
+                <div class="demo-col">
+                    <p class="ff-serif">font-family: serif</p>
+                    <p class="ff-sans">font-family: sans-serif</p>
+                    <p class="ff-mono">font-family: monospace</p>
+                    <p class="ff-specific">Arial, Helvetica, sans-serif (with fallback)</p>
+                    <p class="ff-custom">Custom @font-face font (Inter as stand-in)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 04 UNITS, LINE-HEIGHTS & TEXT-TRANSFORMS ═══════════ -->
+    <section class="section" id="units">
+        <div class="section-label">04 - Units, Line-Heights &amp; Text-Transforms</div>
+        <h2 class="section-title">Units · Line-Heights · Text-Transforms</h2>
+
+        <!-- px -->
+        <div class="concept-block">
+            <h3 class="concept-title">Pixels <code>px</code> - Absolute Unit</h3>
+            <p class="concept-desc">Pixels (px) represent a fixed size on the screen. 1px is equal to one dot on the screen. It does <strong>not</strong> scale with the user's settings or the viewport size. Default font size in most browsers is 16px.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#px { font-size: 16px; }</pre>
+                <div class="demo-col">
+                    <span class="u-10px">10px</span>
+                    <span class="u-16px">16px (default)</span>
+                    <span class="u-24px">24px</span>
+                    <span class="u-32px">32px</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- relative units (in context of font size) -->
+        <div class="concept-block">
+            <h3 class="concept-title">Relative Units - <code>em</code>, <code>rem</code>, <code>%</code></h3>
+            <p class="concept-desc">
+                <strong>em</strong> - Relative to the font size of the parent element. If the parent has font-size 16px, then 1em = 16px. When the parent's font size changes, 1em changes accordingly.<br/>
+                <strong>rem</strong> - Relative to the font size of the root element (<code>html</code>). If the root has font-size 16px, then 1rem = 16px. It remains consistent regardless of the nesting level.<br/>
+                <strong>%</strong> - Relative to the font size of the parent element. If the parent has font-size 16px, then 100% = 16px. Like em, it scales with the parent.
+            </p>
+            <div class="syntax-row">
+                <pre class="syntax">#em      { font-size: 1em;   }
+#rem     { font-size: 1rem;  }
+#percent { font-size: 100%;  }</pre>
+                <div class="demo-col u-em-parent">
+                    <span class="u-em">1em (relative to parent)</span>
+                    <span class="u-rem">1rem (relative to html)</span>
+                    <span class="u-pct">100% (relative to parent)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- line-height -->
+        <div class="concept-block">
+            <h3 class="concept-title">line-height</h3>
+            <p class="concept-desc">The line-height property controls the amount of space between lines of text. It can be set using various units (px, em, rem, %). A common practice is to use a <strong>unitless value</strong> which acts as a multiplier of the font size - e.g. <code>line-height: 1.5</code> means 1.5 �- the font size.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#lh-normal     { line-height: normal; }
+#lh-number     { line-height: 1.5;    }  /* unitless multiplier */
+#lh-length     { line-height: 24px;   }
+#lh-percentage { line-height: 150%;   }</pre>
+                <div class="demo-col">
+                    <p class="lh-normal">line-height: normal - Lorem ipsum dolor sit amet, consectetur adipiscing elit. More text here.</p>
+                    <p class="lh-15">line-height: 1.5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. More text here.</p>
+                    <p class="lh-24px">line-height: 24px - Lorem ipsum dolor sit amet, consectetur adipiscing elit. More text here.</p>
+                    <p class="lh-150pct">line-height: 150% - Lorem ipsum dolor sit amet, consectetur adipiscing elit. More text here.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- text-transform -->
+        <div class="concept-block">
+            <h3 class="concept-title">text-transform</h3>
+            <p class="concept-desc">The text-transform property controls the capitalization of text:
+                <strong>uppercase</strong> - all characters to uppercase.
+                <strong>lowercase</strong> - all characters to lowercase.
+                <strong>capitalize</strong> - first character of each word to uppercase.
+                <strong>none</strong> - no transformation applied.
+            </p>
+            <div class="syntax-row">
+                <pre class="syntax">#uppercase  { text-transform: uppercase;  }
+#lowercase  { text-transform: lowercase;  }
+#capitalize { text-transform: capitalize; }
+#none       { text-transform: none;       }</pre>
+                <div class="demo-col">
+                    <p class="tt-upper">text-transform: uppercase</p>
+                    <p class="tt-lower">TEXT-TRANSFORM: LOWERCASE</p>
+                    <p class="tt-cap">text-transform: capitalize each word</p>
+                    <p class="tt-none">TEXT-TRANSFORM: NONE - no change</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 06 BOX MODEL ═══════════ -->
+    <section class="section" id="boxmodel">
+        <div class="section-label">06 - Height, Width, Border, Padding &amp; Margin</div>
+        <h2 class="section-title">The Box Model</h2>
+
+        <div class="concept-block">
+            <h3 class="concept-title">Box Model Overview</h3>
+            <p class="concept-desc">The content is made up of four parts: <strong>content</strong> (where text/images display), <strong>padding</strong> (space between content and border), <strong>border</strong> (line surrounding padding), and <strong>margin</strong> (outer space separating element from others).</p>
+            <div class="bm-diagram-wrapper">
+                <div class="bm-label-margin">MARGIN (outer space)</div>
+                <div class="bm-margin">
+                    <div class="bm-label-border">BORDER (outline)</div>
+                    <div class="bm-border">
+                        <div class="bm-label-padding">PADDING (gap)</div>
+                        <div class="bm-padding">
+                            <div class="bm-content">CONTENT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- width/height + border shorthand -->
+        <div class="concept-block">
+            <h3 class="concept-title">Width, Height &amp; Border</h3>
+            <p class="concept-desc">Using background-color we can see the dimensions of an element. Border shorthand: <code>border: width style color</code>. Full syntax uses three separate properties: <code>border-width</code>, <code>border-style</code>, <code>border-color</code>.</p>
+            <div class="syntax-row">
+                <pre class="syntax">/* shorthand */
+.box {
+    width: 400px;
+    height: 200px;
+    border: 2px dotted rgb(136, 17, 17);
+}
+
+/* full syntax */
+h1 {
+    border-width: 2px;
+    border-color: rgb(54, 70, 7);
+    border-style: solid;
+}</pre>
+                <div class="demo-col">
+                    <div class="bm-shorthand">border: 2px dotted red - shorthand</div>
+                    <div class="bm-fullsyntax">border-width / border-color / border-style - full syntax</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- border-radius -->
+        <div class="concept-block">
+            <h3 class="concept-title">border-radius</h3>
+            <p class="concept-desc">Used to create rounded corners. The value can be in pixels or percentage. If the value is 50% it will create a circle <em>if the width and height are equal</em>.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#div-a { border-radius: 10px; }
+#div-b { border-radius: 25px; }
+#div-c { border-radius: 50%;  } /* circle when w == h */</pre>
+                <div class="demo-radius-row">
+                    <div class="bm-r0">0px</div>
+                    <div class="bm-r10">10px</div>
+                    <div class="bm-r25">25px</div>
+                    <div class="bm-r50">50%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- padding -->
+        <div class="concept-block">
+            <h3 class="concept-title">Padding</h3>
+            <p class="concept-desc">Padding is the space between the content and the border. The padding can be set for each side (top, right, bottom, left). Shorthand with one value sets all four sides. Shorthand with four values sets T R B L in order.</p>
+            <div class="syntax-row">
+                <pre class="syntax">/* individual sides */
+padding-top: 40px;
+padding-right: 40px;
+padding-bottom: 40px;
+padding-left: 40px;
+
+/* shorthand - all four sides */
+padding: 40px;
+
+/* shorthand - top right bottom left */
+padding: 40px 40px 40px 40px;</pre>
+                <div class="demo-col">
+                    <div class="bm-pad-individual">Individual: padding-top/right/bottom/left: 20px</div>
+                    <div class="bm-pad-shorthand1">Shorthand: padding: 20px (all sides)</div>
+                    <div class="bm-pad-shorthand4">Shorthand: padding: 10px 20px 30px 40px (T R B L)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- margin -->
+        <div class="concept-block">
+            <h3 class="concept-title">Margin</h3>
+            <p class="concept-desc">Margin is the space outside the border that separates the element from other elements. Same shorthand rules as padding.</p>
+            <div class="syntax-row">
+                <pre class="syntax">/* individual sides */
+margin-top: 20px;
+margin-right: 20px;
+margin-bottom: 20px;
+margin-left: 20px;
+
+/* shorthand - all four sides */
+margin: 20px;
+
+/* shorthand - top right bottom left */
+margin: 20px 20px 20px 20px;</pre>
+                <div class="demo-margin-wrapper">
+                    <div class="bm-margin-outer">
+                        <div class="bm-margin-inner">margin: 20px around this box</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 08 DISPLAY, VISIBILITY & ALPHA ═══════════ -->
+    <section class="section" id="display">
+        <div class="section-label">08 - Display, Visibility &amp; Alpha Channel</div>
+        <h2 class="section-title">Display · Visibility · Alpha Channel</h2>
+
+        <!-- block vs inline -->
+        <div class="concept-block">
+            <h3 class="concept-title">Block vs Inline</h3>
+            <p class="concept-desc">
+                <strong>Block elements</strong> take up the full width available and start on a new line. Examples: &lt;div&gt;, &lt;h1&gt;, &lt;p&gt;.<br/>
+                <strong>Inline elements</strong> only take up as much width as necessary and do not start on a new line. Examples: &lt;span&gt;, &lt;a&gt;, &lt;strong&gt;.<br/>
+                We can <strong>change the display property</strong> of an element to modify its behavior.
+            </p>
+            <div class="syntax-row">
+                <pre class="syntax">/* block → inline */
+#blockChange { display: inline; }
+
+/* inline → block */
+#inlineChange { display: block; }</pre>
+                <div class="demo-col">
+                    <div class="dv-block">display: block - takes full width, new line</div>
+                    <div class="dv-inline-wrap">
+                        <span class="dv-inline">inline A</span>
+                        <span class="dv-inline">inline B</span>
+                        <span class="dv-inline">inline C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- inline-block -->
+        <div class="concept-block">
+            <h3 class="concept-title"><code>display: inline-block</code></h3>
+            <p class="concept-desc">Inline elements do not start on a new line, and their <strong>vertical</strong> margins and padding do not affect the layout. To solve this we can use <code>display: inline-block</code> - similar to inline elements, but <strong>with block-level properties like Margin and Padding</strong>.</p>
+            <div class="syntax-row">
+                <pre class="syntax">.divEdit1 {
+    display: inline;
+    /* vertical margin/padding ignored ↑ */
+}
+
+.divEdit2 {
+    display: inline-block;
+    /* respects width, height, margin, padding */
+}</pre>
+                <div class="demo-col">
+                    <div class="dv-ib">inline-block A - has w/h/margin/padding</div>
+                    <div class="dv-ib">inline-block B</div>
+                    <div class="dv-ib">inline-block C</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- display none vs visibility hidden -->
+        <div class="concept-block">
+            <h3 class="concept-title"><code>display: none</code> vs <code>visibility: hidden</code></h3>
+            <p class="concept-desc">
+                <strong>display: none</strong> - the element is <em>completely removed</em> from the document flow and is not visible.<br/>
+                <strong>visibility: hidden</strong> - the element is hidden but <em>still takes up space</em> in the layout.
+            </p>
+            <div class="syntax-row">
+                <pre class="syntax">#box2      { display: none;       }
+#box2again { visibility: hidden;  }</pre>
+                <div class="demo-col">
+                    <div class="dv-before-none">Element before</div>
+                    <div class="dv-none">display: none - I'm removed from flow</div>
+                    <div class="dv-after-none">Element after - jumps up (no space reserved)</div>
+                    <div class="dv-vis-spacer"></div>
+                    <div class="dv-before-hidden">Before hidden</div>
+                    <div class="dv-hidden">visibility: hidden - space still reserved</div>
+                    <div class="dv-after-hidden">After hidden - space is preserved above</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- alpha channel -->
+        <div class="concept-block">
+            <h3 class="concept-title">Alpha Channel - <code>rgba()</code></h3>
+            <p class="concept-desc">The alpha channel is a component of a color that represents its <strong>transparency</strong>. It is often used in RGBA (Red, Green, Blue, Alpha) color values. The alpha value ranges from <strong>0</strong> (completely transparent) to <strong>1</strong> (completely opaque).</p>
+            <div class="syntax-row">
+                <pre class="syntax">#alpha1 { background-color: rgba(255, 0, 0, 0.25); }
+#alpha2 { background-color: rgba(255, 0, 0, 0.5);  }
+#alpha3 { background-color: rgba(255, 0, 0, 0.75); }
+/* alpha=1 is fully opaque */</pre>
+                <div class="demo-alpha-row">
+                    <div class="alpha-box alpha-25"><span>α = 0.25</span></div>
+                    <div class="alpha-box alpha-50"><span>α = 0.50</span></div>
+                    <div class="alpha-box alpha-75"><span>α = 0.75</span></div>
+                    <div class="alpha-box alpha-100"><span>α = 1.0</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 10 RELATIVE UNITS ═══════════ -->
+    <section class="section" id="relunits">
+        <div class="section-label">10 - Relative Units</div>
+        <h2 class="section-title">Relative Units</h2>
+
+        <div class="concept-block">
+            <h3 class="concept-title">% - Percentage of the parent element's dimension</h3>
+            <div class="syntax-row">
+                <pre class="syntax">#box1 { width: 200px; }   /* parent */
+#box2 {
+    width: 50%;   /* 50% of parent width  */
+    height: 50%;  /* 50% of parent height */
+}</pre>
+                <div class="ru-pct-parent">
+                    <div class="ru-pct-100">100%</div>
+                    <div class="ru-pct-75">75%</div>
+                    <div class="ru-pct-50">50%</div>
+                    <div class="ru-pct-25">25%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-block">
+            <h3 class="concept-title">em - Relative to the parent element's font-size</h3>
+            <p class="concept-desc">em units represent the font size of the element. If the parent font size is 16px, then 1em = 16px. So 2em = 2 �- 16px = 32px.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#box3 { font-size: 16px;  /* parent */ }
+#box4 {
+    font-size: 2em;
+    /* 2 �- 16px = 32px */
+}</pre>
+                <div class="demo-col ru-em-parent">
+                    <span class="ru-em-1">1em</span>
+                    <span class="ru-em-2">2em (twice the parent)</span>
+                    <span class="ru-em-3">3em</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-block">
+            <h3 class="concept-title">rem - Root em (relative to the html tag)</h3>
+            <p class="concept-desc">Root em units mean the font size of the root element (html tag). 1rem = font-size of html. This is consistent regardless of nesting.</p>
+            <div class="syntax-row">
+                <pre class="syntax">html { font-size: 16px; }
+#box5 {
+    font-size: 1rem;
+    /* 1rem = 16px (html font-size) */
+}</pre>
+                <div class="demo-col">
+                    <span class="ru-rem-1">1rem</span>
+                    <span class="ru-rem-2">2rem</span>
+                    <span class="ru-rem-3">3rem</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-block">
+            <h3 class="concept-title">vw / vh - Viewport Width &amp; Height</h3>
+            <p class="concept-desc">vh means a percentage of the viewport height (height of the browser window). vw means a percentage of the viewport width. 50vw = 50% of the browser window width. 50vh = 50% of the browser window height.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#box6 {
+    width: 50vw;   /* 50% of viewport width  */
+    height: 50vh;  /* 50% of viewport height */
+}</pre>
+                <div class="demo-col">
+                    <div class="ru-vw">width: 40vw - 40% of viewport width</div>
+                    <div class="ru-vh">height: 10vh - 10% of viewport height</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 11 POSITION ═══════════ -->
+    <section class="section" id="position">
+        <div class="section-label">11 - Position &amp; Z-Index</div>
+        <h2 class="section-title">Position</h2>
+
+        <div class="concept-block">
+            <h3 class="concept-title">position: static (default)</h3>
+            <p class="concept-desc">Static positioning means the element is positioned according to the normal document flow. This is the default positioning behavior. We <strong>can't change its position</strong> in any way - the <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code> properties and <code>z-index</code> have <strong>no effect</strong>.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#box1 {
+    position: static;
+    top: 20px;    /* no effect */
+    left: 20px;   /* no effect */
+}</pre>
+                <div class="demo-col">
+                    <div class="pos-static">position: static - top/left/right/bottom have no effect here</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-block">
+            <h3 class="concept-title">position: relative</h3>
+            <p class="concept-desc">Relative positioning means the element is positioned <strong>relative to its normal position</strong>. We can change its position using top, left, right, bottom. But it will still <strong>take up the same space</strong> in the document flow as if it were static.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#box2 {
+    position: relative;
+    top: 20px;   /* shifted down 20px from its normal spot */
+    left: 20px;  /* shifted right 20px from its normal spot */
+}</pre>
+                <div class="pos-rel-demo">
+                    <div class="pos-normal">Normal element</div>
+                    <div class="pos-relative">position: relative - shifted top:15px left:15px</div>
+                    <div class="pos-normal">Next element - space still reserved above</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-block">
+            <h3 class="concept-title">position: absolute</h3>
+            <p class="concept-desc">The element is positioned relative to its <strong>nearest positioned ancestor</strong> (an ancestor with a position other than static). If no such ancestor exists, it is positioned relative to the initial containing block (usually the viewport). It <strong>removes the element from the normal document flow</strong>, so it does not take up space in the layout.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#box3 {
+    position: absolute;
+    top: 250px;
+    left: 200px;
+    /* anchored to nearest positioned parent */
+}</pre>
+                <div class="pos-abs-parent">
+                    <div class="pos-abs-anchor">Positioned parent (position: relative)</div>
+                    <div class="pos-absolute">position: absolute - removed from flow, anchored to parent</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-block">
+            <h3 class="concept-title">position: fixed</h3>
+            <p class="concept-desc">The element is positioned relative to the <strong>viewport (the browser window)</strong>. It <strong>removes the element from the normal document flow</strong> so it does not take up space. Commonly used for sticky headers or footers that stay on screen while scrolling.</p>
+            <div class="syntax-row">
+                <pre class="syntax">/* sticky footer bar */
+#box4 {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+}
+
+/* sticky header bar */
+#fixedbox {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    top: 0px;
+}</pre>
+                <div class="demo-col">
+                    <div class="pos-fixed-note">Fixed elements are pinned to the viewport - they don't scroll with the page. Used for nav bars, banners, chat buttons.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-block">
+            <h3 class="concept-title">position: sticky</h3>
+            <p class="concept-desc">The element is positioned relative to the viewport <strong>once it reaches a certain scroll position</strong>. Before that scroll position it behaves like a relative element.</p>
+            <div class="syntax-row">
+                <pre class="syntax">#box5 {
+    position: sticky;
+    top: 0;
+    left: 50%;
+}</pre>
+                <div class="pos-sticky-scroll">
+                    <div class="pos-sticky-header">I'm sticky - stays at top once you scroll past me</div>
+                    <p class="pos-sticky-content">Scroll inside this box to see the sticky effect. Lorem ipsum dolor sit amet, consectetur adipiscing elit. The sticky header above sticks at the top of its scroll container once you reach it. Keep scrolling… more text. More text here. And more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 11 Z-INDEX ═══════════ -->
+    <section class="section" id="zindex">
+        <div class="section-label">11 - Z-Index</div>
+        <h2 class="section-title">Z-Index</h2>
+
+        <div class="concept-block">
+            <h3 class="concept-title">Z-Index - Stacking Order</h3>
+            <p class="concept-desc">
+                If a div overlaps with another div, the z-index property determines which one appears on top. By default, elements are stacked in the order they appear in the HTML, with <strong>later elements appearing on top</strong>.<br/><br/>
+                The z-index property <strong>only works on elements that have a position value other than static</strong>. You need to set position to relative, absolute, or fixed for z-index to take effect.<br/><br/>
+                If the value of z-index is higher, the element will be displayed in front of elements with a lower z-index value. If two elements have the same z-index value, the one that appears later in the HTML will be displayed on top.
+            </p>
+            <div class="syntax-row">
+                <pre class="syntax">#box1 {
+    position: absolute;
+    z-index: 1;  /* behind box2 */
+}
+#box2 {
+    position: absolute;
+    z-index: 2;  /* in front of box1 */
+}
+#box3 {
+    position: absolute;
+    z-index: 3;  /* in front of both box1 and box2 */
+}</pre>
+                <div class="zi-demo-area">
+                    <div class="zi-box zi-1">z-index: 1</div>
+                    <div class="zi-box zi-2">z-index: 2</div>
+                    <div class="zi-box zi-3">z-index: 3 (top)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 12 BACKGROUND IMAGE & SIZE ═══════════ -->
+    <section class="section" id="bg">
+        <div class="section-label">12 - Background Image &amp; Size</div>
+        <h2 class="section-title">Background Image &amp; Size</h2>
+
+        <div class="concept-block">
+            <h3 class="concept-title">background-image + background-size</h3>
+            <div class="syntax-row">
+                <pre class="syntax">/* cover - scales to cover entire box, may crop */
+#box1 {
+    background-image: url('...');
+    background-size: cover;
+}
+
+/* contain - fits fully inside, may leave space/tile */
+#box2 {
+    background-image: url('...');
+    background-size: contain;
+}
+
+/* contain + no-repeat - fits inside, does not tile */
+#box3 {
+    background-image: url('...');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* auto - natural image size, tiles if smaller */
+#box4 {
+    background-image: url('...');
+    background-size: auto;
+}</pre>
+                <div class="bg-demo-row">
+                    <div class="bg-demo bg-cover"><span class="bg-label">cover</span></div>
+                    <div class="bg-demo bg-contain"><span class="bg-label">contain</span></div>
+                    <div class="bg-demo bg-contain-nr"><span class="bg-label">contain + no-repeat</span></div>
+                    <div class="bg-demo bg-auto"><span class="bg-label">auto</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ 14 FLEXBOX ═══════════ -->
+    <section class="section" id="flexbox">
+        <div class="section-label">14 - Flexbox</div>
+        <h2 class="section-title">Flexbox - Container Properties</h2>
+
+        <!-- display flex -->
+        <div class="concept-block">
+            <h3 class="concept-title">display: flex</h3>
+            <p class="concept-desc">If I want to use flex in a container I need to set the display property to flex. So now we can use flexbox properties.</p>
+            <pre class="syntax">.container {
+    display: flex;
+}</pre>
+        </div>
+
+        <!-- flex-direction -->
+        <div class="concept-block">
+            <h3 class="concept-title">flex-direction</h3>
+            <p class="concept-desc">In flex direction the content div size will auto adjust according to the inner content size.</p>
+            <div class="syntax-row">
+                <pre class="syntax">/* row - items in a row left to right (default) */
+#container1 { flex-direction: row; }
+
+/* row-reverse - items in a row right to left */
+#container2 { flex-direction: row-reverse; }
+
+/* column - items in a column top to bottom */
+#container3 { flex-direction: column; }
+
+/* column-reverse - items in a column bottom to top */
+#container4 { flex-direction: column-reverse; }</pre>
+                <div class="fd-demo-group">
+                    <div>
+                        <div class="fd-label">row (default)</div>
+                        <div class="flex-c fd-row"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div></div>
+                    </div>
+                    <div>
+                        <div class="fd-label">row-reverse</div>
+                        <div class="flex-c fd-row-rev"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div></div>
+                    </div>
+                    <div>
+                        <div class="fd-label">column</div>
+                        <div class="flex-c fd-col"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div></div>
+                    </div>
+                    <div>
+                        <div class="fd-label">column-reverse</div>
+                        <div class="flex-c fd-col-rev"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- justify-content -->
+        <div class="concept-block">
+            <h3 class="concept-title">justify-content</h3>
+            <p class="concept-desc">
+                1. <strong>flex-start</strong> - items placed at the start of the container (default).<br/>
+                2. <strong>flex-end</strong> - items placed at the end of the container.<br/>
+                3. <strong>center</strong> - items placed at the center of the container.<br/>
+                4. <strong>space-around</strong> - equal space around items. The first/last items have half the space of between-items.<br/>
+                5. <strong>space-between</strong> - equal space between items. First item at start, last item at end.<br/>
+                6. <strong>space-evenly</strong> - equal space between all items including edges.
+            </p>
+            <div class="jc-demo-group">
+                <div><div class="fd-label">flex-start</div><div class="flex-c jc-start"><div class="fb c1">A</div><div class="fb c2">B</div><div class="fb c3">C</div></div></div>
+                <div><div class="fd-label">flex-end</div><div class="flex-c jc-end"><div class="fb c1">A</div><div class="fb c2">B</div><div class="fb c3">C</div></div></div>
+                <div><div class="fd-label">center</div><div class="flex-c jc-center"><div class="fb c1">A</div><div class="fb c2">B</div><div class="fb c3">C</div></div></div>
+                <div><div class="fd-label">space-around</div><div class="flex-c jc-around"><div class="fb c1">A</div><div class="fb c2">B</div><div class="fb c3">C</div></div></div>
+                <div><div class="fd-label">space-between</div><div class="flex-c jc-between"><div class="fb c1">A</div><div class="fb c2">B</div><div class="fb c3">C</div></div></div>
+                <div><div class="fd-label">space-evenly</div><div class="flex-c jc-evenly"><div class="fb c1">A</div><div class="fb c2">B</div><div class="fb c3">C</div></div></div>
+            </div>
+        </div>
+
+        <!-- flex-wrap -->
+        <div class="concept-block">
+            <h3 class="concept-title">flex-wrap</h3>
+            <p class="concept-desc">
+                <strong>nowrap</strong> - boxes will not wrap to the next line and auto adjust their size (default).<br/>
+                <strong>wrap</strong> - boxes will wrap to the next line if they don't fit in the current line.<br/>
+                <strong>wrap-reverse</strong> - boxes will wrap to the next line in reverse order.<br/>
+                <strong>flex-flow</strong> is a shorthand property for setting both flex-direction and flex-wrap.
+            </p>
+            <div class="syntax-row">
+                <pre class="syntax">#container12 { flex-wrap: nowrap;       }
+#container22 { flex-wrap: wrap;         }
+#container32 { flex-wrap: wrap-reverse; }
+
+/* shorthand for direction + wrap */
+#container13 { flex-flow: row wrap; }</pre>
+                <div class="fw-demo-group">
+                    <div>
+                        <div class="fd-label">nowrap</div>
+                        <div class="flex-c fw-nowrap"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div>
+                    </div>
+                    <div>
+                        <div class="fd-label">wrap</div>
+                        <div class="flex-c fw-wrap"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div>
+                    </div>
+                    <div>
+                        <div class="fd-label">wrap-reverse</div>
+                        <div class="flex-c fw-wrap-rev"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- align-items -->
+        <div class="concept-block">
+            <h3 class="concept-title">align-items</h3>
+            <p class="concept-desc">Align Items is always by default <strong>stretch</strong> - items stretch to fill the container along the cross axis so there will be no space around them. Works per-line when wrapping.</p>
+            <div class="syntax-row">
+                <pre class="syntax">/* stretch - fills cross axis (default) */
+#container14 { align-items: stretch;    }
+
+/* flex-start - starts from top of each line */
+#container24 { align-items: flex-start; }
+
+/* center - centered vertically in each line */
+#container34 { align-items: center;     }
+
+/* flex-end - ends at bottom of each line */
+#container44 { align-items: flex-end;   }</pre>
+                <div class="ai-demo-group">
+                    <div>
+                        <div class="fd-label">stretch (default)</div>
+                        <div class="flex-c ai-stretch"><div class="fb c1 fb-s">A</div><div class="fb c2 fb-t">B</div><div class="fb c3 fb-s">C</div></div>
+                    </div>
+                    <div>
+                        <div class="fd-label">flex-start</div>
+                        <div class="flex-c ai-start"><div class="fb c1 fb-s">A</div><div class="fb c2 fb-t">B</div><div class="fb c3 fb-s">C</div></div>
+                    </div>
+                    <div>
+                        <div class="fd-label">center</div>
+                        <div class="flex-c ai-center"><div class="fb c1 fb-s">A</div><div class="fb c2 fb-t">B</div><div class="fb c3 fb-s">C</div></div>
+                    </div>
+                    <div>
+                        <div class="fd-label">flex-end</div>
+                        <div class="flex-c ai-end"><div class="fb c1 fb-s">A</div><div class="fb c2 fb-t">B</div><div class="fb c3 fb-s">C</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- align-content -->
+        <div class="concept-block">
+            <h3 class="concept-title">align-content</h3>
+            <p class="concept-desc">Align Content means they are now not working as different items for each line - they are treated as <strong>the same content for the whole container</strong> (only takes effect when there are multiple lines, i.e. with flex-wrap).</p>
+            <div class="syntax-row">
+                <pre class="syntax">/* stretch - default, fills the whole container */
+#container15 { align-content: stretch;      }
+/* flex-start - all lines packed to the top */
+#container25 { align-content: flex-start;   }
+/* center - all lines packed to the center */
+#container35 { align-content: center;       }
+/* flex-end - all lines packed to the bottom */
+#container45 { align-content: flex-end;     }
+/* space-around - equal space around each line */
+#container55 { align-content: space-around; }
+/* space-between - equal space between lines */
+#container65 { align-content: space-between;}
+/* space-evenly - equal space between lines + edges */
+#container75 { align-content: space-evenly; }</pre>
+                <div class="ac-demo-group">
+                    <div><div class="fd-label">stretch</div><div class="flex-c ac-stretch"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div></div>
+                    <div><div class="fd-label">flex-start</div><div class="flex-c ac-start"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div></div>
+                    <div><div class="fd-label">center</div><div class="flex-c ac-center"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div></div>
+                    <div><div class="fd-label">flex-end</div><div class="flex-c ac-end"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div></div>
+                    <div><div class="fd-label">space-around</div><div class="flex-c ac-around"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div></div>
+                    <div><div class="fd-label">space-between</div><div class="flex-c ac-between"><div class="fb c1">1</div><div class="fb c2">2</div><div class="fb c3">3</div><div class="fb c1">4</div><div class="fb c2">5</div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ITEM PROPERTIES -->
+        <h2 class="section-title" style="margin-top:48px;">Flexbox - Item Properties</h2>
+
+        <!-- order -->
+        <div class="concept-block">
+            <h3 class="concept-title">order</h3>
+            <p class="concept-desc">
+                The box order will be determined by the order of the elements in the HTML. But if we want a custom order, we can use the <code>order</code> property.<br/>
+                1. Boxes with no order or order: 0 appear first, in HTML order. Negative values appear before them.<br/>
+                2. Boxes with positive order values appear after, sorted lowest to highest.<br/>
+                3. If two or more boxes have the same order value, they appear in HTML order.
+            </p>
+            <div class="syntax-row">
+                <pre class="syntax">#box1 { order: 3;  }
+#box2 { order: 1;  }
+#box3 { order: 2;  }
+#box4 { order: -5; } /* appears first - negative */
+#box5 { order: 0;  }
+#box8 { order: 5;  }
+#box9 { order: 4;  }</pre>
+                <div class="demo-col">
+                    <div class="flex-c fi-order">
+                        <div class="fb fi-oneg">HTML 4th<br>order:-5</div>
+                        <div class="fb fi-o1">HTML 2nd<br>order:1</div>
+                        <div class="fb fi-o2">HTML 3rd<br>order:2</div>
+                        <div class="fb fi-o3">HTML 1st<br>order:3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- flex-grow -->
+        <div class="concept-block">
+            <h3 class="concept-title">flex-grow</h3>
+            <p class="concept-desc">Flex grow defines how much space a flex item will take up relative to other flex items. If flex-grow is set to 1, the item will take up all available space in the container. If flex-grow is set to 0, the item will not take up any additional space (default).</p>
+            <div class="syntax-row">
+                <pre class="syntax">.box  { flex-grow: 0; } /* default - no extra space */
+.box1 { flex-grow: 1; } /* takes all available space */</pre>
+                <div class="demo-col">
+                    <div class="flex-c fi-grow-row">
+                        <div class="fb fi-grow0">grow: 0</div>
+                        <div class="fb fi-grow1">grow: 1 - takes remaining space</div>
+                        <div class="fb fi-grow2">grow: 2 - takes 2�- more</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- flex-shrink -->
+        <div class="concept-block">
+            <h3 class="concept-title">flex-shrink</h3>
+            <p class="concept-desc">Flex Shrink defines how much a flex item will shrink relative to other flex items when there isn't enough space in the container. If flex-shrink is set to 1, the item will shrink proportionally (default). If flex-shrink is set to 0, the item will <strong>not shrink at all</strong> and will overflow if there's not enough space and wrap is disabled.</p>
+            <div class="syntax-row">
+                <pre class="syntax">.box2 {
+    flex-shrink: 0;
+    /* won't shrink - will overflow when space runs out */
+}
+/* default: flex-shrink = 1 (shrinks proportionally) */</pre>
+                <div class="demo-col">
+                    <div class="flex-c fi-shrink-row">
+                        <div class="fb fi-shrink1">shrink:1 - shrinks proportionally</div>
+                        <div class="fb fi-shrink0">shrink:0 - does NOT shrink</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="page-footer">
+    <p>CSS Basics Visual Cheatsheet @nahinio</p>
+</footer>
+
+</body>
+</html>
